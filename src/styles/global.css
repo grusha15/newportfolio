@@ -1,0 +1,482 @@
+/* ============================================
+   FONTS — load from Google Fonts
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500&family=Noto+Sans+Kannada:wght@400;500&family=Noto+Sans+Tamil:wght@400;500&family=Noto+Sans+Bengali:wght@400;500&family=Noto+Sans+Telugu:wght@400;500&family=Noto+Sans+Malayalam:wght@400;500&display=swap');
+
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+:root {
+  /* Colors — warm, considered, grounded */
+  --color-bg: #f7f3ec;
+  --color-bg-alt: #f0ebe0;
+  --color-text: #1f2a44;
+  --color-text-muted: #6b7280;
+  --color-accent: #8b1a2b;
+  --color-accent-soft: #a83245;
+  --color-rule: #e4dfd4;
+
+  /* Type */
+  --font-serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-indic-kannada: 'Noto Sans Kannada', var(--font-serif);
+  --font-indic-devanagari: 'Noto Sans Devanagari', var(--font-serif);
+  --font-indic-tamil: 'Noto Sans Tamil', var(--font-serif);
+  --font-indic-bengali: 'Noto Sans Bengali', var(--font-serif);
+  --font-indic-telugu: 'Noto Sans Telugu', var(--font-serif);
+  --font-indic-malayalam: 'Noto Sans Malayalam', var(--font-serif);
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+
+  /* Layout */
+  --max-width: 680px;
+  --max-width-wide: 920px;
+}
+
+/* ============================================
+   RESET
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 300;
+  margin-bottom: var(--space-md);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+h3 {
+  font-size: 1.35rem;
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+p {
+  margin-bottom: var(--space-sm);
+  max-width: var(--max-width);
+}
+
+strong { font-weight: 600; }
+em { font-style: italic; }
+
+blockquote {
+  border-left: 2px solid var(--color-accent);
+  padding-left: var(--space-md);
+  margin: var(--space-md) 0;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+.container-wide {
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+}
+
+main { min-height: 80vh; }
+
+/* ============================================
+   HEADER
+   ============================================ */
+.site-header {
+  padding: var(--space-md) var(--space-md);
+  max-width: var(--max-width-wide);
+  margin: 0 auto;
+}
+
+.site-header a {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--color-text-muted);
+}
+
+.site-header a:hover { color: var(--color-accent); }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer {
+  margin-top: var(--space-xl);
+  padding: var(--space-lg) var(--space-md);
+  border-top: 1px solid var(--color-rule);
+  max-width: var(--max-width-wide);
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.site-footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.site-footer a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  margin-right: var(--space-md);
+}
+
+.site-footer a:hover { color: var(--color-accent); }
+
+/* ============================================
+   HOME PAGE — HERO
+   ============================================ */
+.hero {
+  padding: var(--space-xl) 0 var(--space-lg) 0;
+}
+
+/* Rotating Indic greeting */
+.hero-greeting {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  color: var(--color-accent);
+  margin-bottom: var(--space-md);
+  height: 1.4em;
+  position: relative;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.hero-greeting span {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  animation: greetingRotate 21s infinite;
+}
+
+.hero-greeting span:nth-child(1) {
+  font-family: var(--font-indic-kannada);
+  animation-delay: 0s;
+}
+.hero-greeting span:nth-child(2) {
+  font-family: var(--font-indic-devanagari);
+  animation-delay: 3s;
+}
+.hero-greeting span:nth-child(3) {
+  font-family: var(--font-indic-tamil);
+  animation-delay: 6s;
+}
+.hero-greeting span:nth-child(4) {
+  font-family: var(--font-sans);
+  animation-delay: 9s;
+}
+.hero-greeting span:nth-child(5) {
+  font-family: var(--font-indic-bengali);
+  animation-delay: 12s;
+}
+.hero-greeting span:nth-child(6) {
+  font-family: var(--font-indic-telugu);
+  animation-delay: 15s;
+}
+.hero-greeting span:nth-child(7) {
+  font-family: var(--font-indic-malayalam);
+  animation-delay: 18s;
+}
+
+@keyframes greetingRotate {
+  0%, 10% { opacity: 1; transform: translateY(0); }
+  14.28%, 100% { opacity: 0; transform: translateY(-4px); }
+}
+
+.hero-name {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-md);
+}
+
+.hero-tagline {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+  line-height: 1.4;
+  color: var(--color-text-muted);
+  max-width: var(--max-width);
+}
+
+.hero-status {
+  margin-top: var(--space-md);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hero-status::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #2d8a3e;
+  display: inline-block;
+}
+
+/* ============================================
+   HOME PAGE — WORK SECTION
+   ============================================ */
+.section-label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.work-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.work-item {
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-rule);
+  transition: padding 0.2s ease;
+}
+
+.work-item:last-child { border-bottom: 1px solid var(--color-rule); }
+
+.work-item a {
+  text-decoration: none;
+  display: block;
+}
+
+.work-item-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+  transition: color 0.2s ease;
+}
+
+.work-item-description {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  max-width: 600px;
+}
+
+.work-item-meta {
+  display: flex;
+  gap: var(--space-md);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-top: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.work-item:hover .work-item-title { color: var(--color-accent); }
+
+/* ============================================
+   HOME PAGE — ABOUT
+   ============================================ */
+.about { padding: var(--space-lg) 0; }
+
+.about p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+}
+
+/* ============================================
+   CASE STUDY PAGE
+   ============================================ */
+.case-study { padding: var(--space-lg) 0; }
+
+.case-study-title {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: var(--space-sm);
+}
+
+.case-study-subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+  max-width: var(--max-width);
+}
+
+.case-study-meta {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.case-study h2 {
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-md);
+  font-size: 1.85rem;
+}
+
+.case-study h3 {
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-sm);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.case-study p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: var(--space-sm);
+  max-width: var(--max-width);
+}
+
+.case-study figure {
+  margin: var(--space-md) 0;
+  max-width: var(--max-width-wide);
+}
+
+.case-study figure img {
+  width: 100%;
+  border-radius: 4px;
+  background-color: var(--color-bg-alt);
+}
+
+.case-study figcaption {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: var(--space-xs);
+  text-align: center;
+}
+
+.case-study table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: var(--space-md) 0;
+  font-size: 0.95rem;
+}
+
+.case-study th, .case-study td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-rule);
+  vertical-align: top;
+}
+
+.case-study th {
+  font-weight: 600;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+
+.sources {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-rule);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.sources p {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 640px) {
+  html { font-size: 16px; }
+  .container, .container-wide { padding: var(--space-md) var(--space-sm); }
+  .hero { padding: var(--space-lg) 0 var(--space-md) 0; }
+}

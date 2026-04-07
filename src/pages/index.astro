@@ -1,17 +1,67 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
+<BaseLayout title="Grusha G S — AI Product Strategist">
+  <div class="container">
+    <section class="hero">
+      <div class="hero-greeting">
+        <span>ನಮಸ್ಕಾರ</span>
+        <span>नमस्ते</span>
+        <span>வணக்கம்</span>
+        <span>Hello</span>
+        <span>নমস্কার</span>
+        <span>నమస్కారం</span>
+        <span>നമസ്കാരം</span>
+      </div>
+      <h1 class="hero-name">Grusha<br/>G S</h1>
+      <p class="hero-tagline">
+        I build AI products that work in the languages most of India actually speaks. Currently shipping multilingual voice systems at Shunya Labs.
+      </p>
+      <div class="hero-status">Open to product roles</div>
+    </section>
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+    <section>
+      <div class="section-label">Selected Work</div>
+      <ul class="work-list">
+        <li class="work-item">
+          <a href="/case-studies/bas-itna-paradox">
+            <h3 class="work-item-title">Kirana Grammar vs. Instamart Logic</h3>
+            <p class="work-item-description">
+              Why Swiggy Instamart is losing the daily Indian household, and what it would take to win it back. A product case study on catalog architecture, user agency, and the gap between how quick commerce thinks and how Indian households actually shop.
+            </p>
+            <div class="work-item-meta">
+              <span>Case Study</span>
+              <span>2026</span>
+            </div>
+          </a>
+        </li>
+
+        <li class="work-item">
+          <a href="https://shunyalabs.ai" target="_blank" rel="noopener">
+            <h3 class="work-item-title">Vak — Indic Real-Time Translation</h3>
+            <p class="work-item-description">
+              Real-time translation across 55 Indic languages and 2,970 translation pairs, launched at the India-AI Impact Summit 2026. One of the most expansive multilingual deployments in the Indian AI ecosystem. Core contributor.
+            </p>
+            <div class="work-item-meta">
+              <span>Production AI</span>
+              <span>Shunya Labs</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="about">
+      <div class="section-label">About</div>
+      <p>
+        I am a data scientist by training and an AI product strategist by practice. I work at Shunya Labs on multilingual voice and language systems for the Indian market — fine-tuning ASR models to under 10% word error rate at sub-second latency, designing synthetic data pipelines for low-resource languages, and translating enterprise constraints into deployable AI.
+      </p>
+      <p>
+        Before Shunya, I co-authored Nasscom's national AI research blueprint, which identified twenty high-impact AI research domains and shaped India's research agenda. I have a paper under review at ICML 2026 and another at Interspeech.
+      </p>
+      <p>
+        I am writing case studies like the one above because I want to formalize the product thinking I have been doing informally for the last two years. The next role I am looking for is one where I can do that thinking with a title and a team that matches it.
+      </p>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,449 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+<BaseLayout title="The &quot;Ishte Saku&quot;/&quot;Bas Itna&quot; Paradox — Grusha G S" description="A product case study on Swiggy Instamart's catalog architecture and what it would take to capture the daily Indian household.">
+  <article class="container case-study">
+
+    <div class="case-study-meta">Case Study · March 2026 · Bengaluru</div>
+
+    <h1 class="case-study-title">The "Ishte Saku"/"Bas Itna" Paradox</h1>
+    <p class="case-study-subtitle">
+      Why Swiggy Instamart is losing the daily Indian household, and what it would take to win it back.
+    </p>
+
+    <p>
+      In Q3 FY26, Swiggy Instamart delivered 106 million orders to 12.8 million users across 128 cities. The speed has arrived. The selection has arrived. And yet, in the household I grew up in, the kirana store downstairs is still open, still busy, and still serving the same customers it served before any of this existed.
+    </p>
+
+    <p>
+      This case study is about why.
+    </p>
+
+    <h2>Design by accretion</h2>
+
+    <p>
+      Swiggy launched Instamart in August 2020, betting that Indian urban households would adopt fifteen-minute grocery delivery the way they had adopted thirty-minute restaurant delivery. The bet paid off on the surface metrics. By Q3 FY26, Instamart was processing 106.4 million orders per quarter from 12.8 million users, generating ₹7,938 crore in gross order value, operating 1,136 dark stores, and growing at 108% year-on-year. The infrastructure is real. The customer base is large. The brand is strong.
+    </p>
+
+    <p>
+      But the catalog that sits on top of this infrastructure was built on assumptions borrowed from a different shopping culture. Pre-packaged SKUs in fixed sizes. Basket minimums that reward planned, larger orders. A merchandising logic optimized for per-SKU margin and warehouse efficiency. The catalog assumes a user who shops the way urban supermarket customers in the West shop — weekly, in bulk, against a planned list, with the storage to absorb the leftovers.
+    </p>
+
+    <p>
+      Most Indian middle-class households do not shop that way. They shop in small, unplanned, frequent runs, triggered by immediate need. The unit of purchase is whatever the household actually needs in the next day or two, and it is almost never the unit a category manager somewhere upstream chose to pre-package. The catalog had been designed for a shopper who does not exist in most of the homes the platform claims to serve. And the consequence of that mismatch is now showing up in the company's quarterly filings.
+    </p>
+
+    <h2>The challenge</h2>
+
+    <p>
+      In Q3 FY26, Instamart lost ₹908 crore. Across the first nine months of FY26, cumulative losses reached ₹2,327 crore against ₹2,802 crore in revenue — losing roughly 83 paise on every rupee earned. The company is not failing on growth. GOV is up 108% year-on-year. The company is failing on unit economics, and the lever it has chosen to fix the unit economics is one I believe is pointed in the wrong direction.
+    </p>
+
+    <p>
+      Swiggy's response to the profitability gap has been Maxxsaver, a basket-building program designed to encourage users to consolidate purchases into larger, less frequent orders. The strategy is explicit and stated by Swiggy's own leadership. Instamart CEO Amitesh Jha, in a recent earnings call: <em>"We believe that this is the right way to approach both basket building for the end consumer, making sure that they get great offers as well as making sure that they come back to our platform again and again."</em>
+    </p>
+
+    <p>
+      The bet has worked on the metric Swiggy is tracking. Average order value has risen from approximately ₹420 in FY24 to ₹612 in Q1 FY26 to ₹697 in Q2 FY26 — a 65% increase in eighteen months. Non-grocery items, which carry higher margins, now make up 26% of Instamart's GOV, up from 7% a year earlier. The basket-building strategy is doing what it was designed to do.
+    </p>
+
+    <p>
+      Losses are still widening.
+    </p>
+
+    <p>
+      The goal of this case study is to argue that the direction is wrong. The lever Instamart is missing is not basket size. It is frequency. And the reason frequency is stuck is the same reason my mother walks downstairs to the kirana store instead of opening the app: the catalog cannot accept the shape of the small, exact, immediate purchases that would drive the frequency number up.
+    </p>
+
+    <p>
+      There is a second number from Swiggy's own filings that makes the gap impossible to ignore. The Q2 FY26 shareholder letter states that Instamart's dark stores are running, at the network average level, at 1,025 orders per day per store — while the same stores can operate at 2,000+ orders per day. Swiggy's own leadership is explicit about what this means: <em>"store-additions are neither the primary growth-lever nor a growth-bottleneck for us in the near-term."</em> Translation: the infrastructure is there, the capacity is there, and the company knows it. The question Swiggy is not answering in the letter — and the question this case study is trying to answer — is what the next lever is, given that the store count is not it.
+    </p>
+
+    <figure>
+      <img src="/images/dark-store-utilization.png" alt="Bar chart showing Instamart dark stores running at 1025 orders per day against a capacity of 2000+ orders per day per store" />
+      <figcaption>Network average dark store utilization in Q2 FY26 against operational capacity. Source: Swiggy Q2 FY26 shareholder letter, October 2025.</figcaption>
+    </figure>
+
+    <h3>My role</h3>
+
+    <p>
+      This case study was researched and written by me as a single contributor over the course of two weeks, working alone. I conducted the household observation, the kirana price comparison, the synthesis of existing public research on Swiggy Instamart, and the design of the proposed solutions. There is no team behind this work. There is no internal Swiggy data. Everything in this case study is built from publicly observable evidence, one household's lived experience, one focused round of fieldwork in Bengaluru, and the numbers Swiggy publishes in its own quarterly filings.
+    </p>
+
+    <p>
+      I am writing this case study as part of a transition from a data science background into product management. The framing of the problem and the diagnostic instinct — looking for what is <em>not</em> in the dashboard rather than what the dashboard says — both come from that background. The product thinking is what I am building, and this case study is one of the early attempts at it.
+    </p>
+
+    <h2>Kickoff: starting at home</h2>
+
+    <p>
+      I did not begin this work with a research plan or a list of hypotheses. I began it by paying attention to what was happening in my own household, because the user I was most interested in understanding lived in the same house as me, and the easiest way to understand her was to watch.
+    </p>
+
+    <p>
+      The user, in this case, is my mother. She manages the small purchase decisions for our household in Bengaluru — the daily cardamom for chai, the half-kilo of onions for that night's cooking, the curd that needs to be bought today because it spoils tomorrow. She has been making these decisions for forty years. She does not call it a shopping pattern or a replenishment grammar. She calls it shopping. But when I sat with her and asked her to walk me through what she had been buying, three things became hard to ignore.
+    </p>
+
+    <p>
+      She bought in quantities Instamart does not sell. She closed the app silently when it could not serve her, without complaining or contacting support. And she relied on the kirana store downstairs not as a backup but as a parallel system, used for a specific class of purchases that Instamart's catalog was never designed to accept.
+    </p>
+
+    <p>
+      I had assumed, when I started, that the kirana store was Instamart's legacy competitor — slowly being replaced as the app got faster and stocked more items. I do not believe that anymore. After a few days of paying attention, what I saw instead was that the kirana store is a fulfillment partner the household has chosen unilaterally for the kinds of small, exact, immediate purchases the app cannot currently serve. Swiggy is not in the process of winning these purchases. It has already lost them, quietly, in millions of households like mine, and it does not know.
+    </p>
+
+    <p>
+      This was the beginning of the working hypothesis that became the rest of this case study: that Instamart's catalog is built on a unit of purchase the Indian household does not actually use, and that the cost of this mismatch is invisible in every dashboard the company currently looks at.
+    </p>
+
+    <h2>Working backwards from the kirana store</h2>
+
+    <p>
+      To test whether the pattern I suspected was real, I needed evidence beyond a conversation. So I did the thing PM work actually requires, which is to stop arguing about the problem in the abstract and go look at it. Over a few days, I documented ten items across both channels — opening Instamart on my phone and walking downstairs to the kirana store with the same item in mind, photographing what I found in each place.
+    </p>
+
+    <p>
+      The ten items are not a shopping list. They are a sample, chosen to test whether the catalog mismatch generalized across categories. Some of them were things my mother had recently needed. Others were things I picked deliberately because I wanted to see whether the pattern held across very different kinds of products — perishables, dry staples, personal care, festival items, daily-use consumables. If the pattern only showed up in one or two categories, the problem would be a narrow merchandising gap. If it showed up across all of them, the problem would be structural.
+    </p>
+
+    <p>
+      It showed up across all of them.
+    </p>
+
+    <h3>Cardamom (elaichi)</h3>
+    <p>
+      My mother needed a few pods for evening tea. On Instamart, the smallest size is a 15-gram packet at ₹76. The kirana store sells a small hanging sachet for ₹10. The ratio between what she wanted to spend and what Instamart forced her to spend is 7.6x.
+    </p>
+
+    <figure>
+      <img src="/images/item-cardamom.png" alt="Side by side comparison of cardamom on Instamart (15g packet at ₹76) and the kirana store (₹10 hanging sachet)" />
+      <figcaption>Cardamom: Instamart's smallest size is 15g at ₹76. The kirana sells a small sachet for ₹10. A 7.6x ratio between what the user wanted to spend and what the catalog forced.</figcaption>
+    </figure>
+
+    <h3>Onions</h3>
+    <p>
+      Three onions for that day's cooking, maybe 400 to 500 grams. On Instamart, the smallest option is 1 kilogram at ₹28. The local vegetable vendor sells three onions for the price of three onions. She went to the vendor.
+    </p>
+
+    <figure>
+      <img src="/images/item-onions.png" alt="Side by side comparison of onions on Instamart (1kg minimum at ₹28) and the local vegetable vendor selling three onions loose" />
+      <figcaption>Onions: Instamart's smallest is 1kg. The vendor downstairs sells exactly three onions at the price for three onions.</figcaption>
+    </figure>
+
+    <h3>Atta (wheat flour)</h3>
+    <p>
+      Enough for a couple of days of rotis, maybe 250 grams. On Instamart, the smallest size is 1 kilogram at ₹63. The kirana shopkeeper weighs out loose atta on a digital scale to whatever amount the customer asks for. I have a photo of the scale reading exactly 250 grams. The kirana offers a feature Instamart does not have: the user specifies the quantity, and the shop fulfills it.
+    </p>
+
+    <figure>
+      <img src="/images/item-atta.png" alt="Side by side comparison of atta on Instamart (1kg minimum) and the kirana shopkeeper weighing loose atta on a digital scale reading 250 grams" />
+      <figcaption>Atta: Instamart's smallest is 1kg at ₹63. The kirana weighs out any amount the customer asks for. The scale in the photo reads exactly 250g.</figcaption>
+    </figure>
+
+    <h3>Sugar</h3>
+    <p>
+      Same pattern as atta. Instamart's smallest size is 1 kilogram at ₹51. The kirana store has an open 50-kg sack marked "SUGAR LOOSE" and the shopkeeper scoops out whatever amount the customer asks for.
+    </p>
+
+    <figure>
+      <img src="/images/item-sugar.png" alt="Side by side comparison of sugar on Instamart (1kg packs) and the kirana store with an open 50kg sack marked SUGAR LOOSE" />
+      <figcaption>Sugar: same pattern as atta. Instamart sells 1kg packs. The kirana scoops loose sugar from a sack marked SUGAR LOOSE.</figcaption>
+    </figure>
+
+    <h3>Shampoo sachets</h3>
+    <p>
+      My mother uses one shampoo sachet per Sunday hair wash. At the kirana store, the entire back wall is covered in strips of Clinic Plus and Sunsilk sachets at ₹1 to ₹2 each. On Instamart, searching "shampoo sachet" returns bottles. The smallest unit is about ₹80. Two orders of magnitude difference, for the same product.
+    </p>
+
+    <figure>
+      <img src="/images/item-shampoo.png" alt="Side by side comparison of shampoo search on Instamart (returns bottles starting at 72ml) and the kirana store wall covered in Clinic Plus and Sunsilk sachets at ₹1 to ₹2 each" />
+      <figcaption>Shampoo sachets: Instamart's search for "shampoo sachet" returns bottles. The kirana's back wall is an entire grid of Clinic Plus and Sunsilk sachets at ₹1 to ₹2 each.</figcaption>
+    </figure>
+
+    <h3>Coffee sachets</h3>
+    <p>
+      I searched "coffee sachet" on Instamart. The results were instant coffee jars and pouches, none of them sachets. The search even autocorrected the query toward bulk coffee. At the kirana store, Bru sachets hang in strips at ₹2 each. The platform does not just fail to stock sachets — it fails to recognize that sachets are a product category users are searching for.
+    </p>
+
+    <figure>
+      <img src="/images/item-coffee.png" alt="Side by side comparison of coffee sachet search on Instamart (returns bulk coffee jars, autocorrects the query) and the kirana store with Bru instant coffee sachets hanging in a strip" />
+      <figcaption>Coffee sachets: Instamart autocorrects the query and returns bulk jars. The kirana has Bru sachets at ₹2 each hanging in strips.</figcaption>
+    </figure>
+
+    <h3>Eggs</h3>
+    <p>
+      Instamart sells eggs in packs of 6, 10, 12, and 30. The local vendor sells eggs loose — three or four tied in a polyethylene bag. If the household needs five eggs, Instamart's choices are six or ten. The kirana's choice is five.
+    </p>
+
+    <figure>
+      <img src="/images/item-eggs.png" alt="Side by side comparison of eggs on Instamart (packs of 6, 10, 12, and 30) and the kirana store selling loose eggs tied in a polyethylene bag" />
+      <figcaption>Eggs: Instamart sells in fixed packs of 6, 10, 12, 30. The kirana sells loose — three or four eggs tied in a small bag.</figcaption>
+    </figure>
+
+    <h3>Camphor (karpoora)</h3>
+    <p>
+      Used daily in Indian households for puja. The kirana sells a ₹1 single-tablet pack. Instamart's smallest is a 40-gram pack at ₹54 to ₹90. For a household that uses one tablet a day, the Instamart pack represents roughly a year's supply purchased in a single transaction.
+    </p>
+
+    <figure>
+      <img src="/images/item-camphor.png" alt="Side by side comparison of camphor on Instamart (40-50g packs at ₹54 to ₹90) and the kirana store's single-tablet pack at ₹1" />
+      <figcaption>Camphor: Instamart sells 40-50g packs at ₹54 to ₹90. The kirana sells a single tablet for ₹1 — exactly what a household needs for one day of puja.</figcaption>
+    </figure>
+
+    <h3>Cashews</h3>
+    <p>
+      Instamart's smallest is 200 grams at ₹233. A household that wants to garnish a festival sweet with a few cashews does not need 200 grams. The kirana sells Classic Masala cashew strips at ₹10 per small packet.
+    </p>
+
+    <figure>
+      <img src="/images/item-cashews.png" alt="Side by side comparison of cashews on Instamart (200g minimum at ₹233) and the kirana store's Classic Masala cashew strips at ₹10 per small packet" />
+      <figcaption>Cashews: Instamart's smallest is 200g at ₹233. The kirana hangs Classic Masala cashew strips at ₹10 per small packet.</figcaption>
+    </figure>
+
+    <h3>Curd (Nandini)</h3>
+    <p>
+      My mother specifically wanted a 250-gram Nandini packet for the next day's meal. Nandini, the state dairy cooperative, manufactures a 200-gram packet — I photographed the packet itself, with the label reading "Net Quantity: 200g." On Instamart, the smallest Nandini size is 500 grams. The 200-gram packet exists as a physical product, is sold across Bengaluru, and is simply not on Instamart's catalog. This is not a supply chain limitation. It is a merchandising decision.
+    </p>
+
+    <figure>
+      <img src="/images/item-curd.png" alt="Side by side comparison of Nandini curd on Instamart (smallest is 500g) and a photograph of the physical Nandini 200g packet with the label reading Net Quantity 200g" />
+      <figcaption>Curd: Instamart's smallest Nandini size is 500g. The 200g Nandini packet exists as a real manufactured product — the label reads "Net Quantity: 200g" — but it is not on the catalog.</figcaption>
+    </figure>
+
+    <p>
+      Ten items, two channels, one pattern. In every case, the kirana store offers a unit of purchase that matches what a household actually needs, and Instamart offers a larger minimum that the user must either accept or abandon. Across the ten items, the kirana store wins nine of them and Instamart wins one — and even the one Instamart wins involves the user buying more than they needed.
+    </p>
+
+    <h2>Reframing the problem</h2>
+
+    <p>
+      Looking at the ten items together, three distinct failure modes show up. Each one calls for a different kind of product intervention.
+    </p>
+
+    <p>
+      <strong>Pack size mismatch.</strong> The user needs a quantity that does not match any pre-packaged size Instamart lists. The Nandini 200-gram packet is the cleanest example — it exists as a real product but is not on the catalog. This is a merchandising decision, not a supply problem.
+    </p>
+
+    <p>
+      <strong>Variable quantity gap.</strong> For items like atta, sugar, onions, and loose vegetables, the natural unit at a kirana store is whatever the customer asks for. The shopkeeper weighs it out. There is no fixed SKU at all. Instamart cannot replicate this with a better list of SKUs — you cannot list every possible weight in 50-gram increments. The only way to serve this is to let the user specify the quantity as input and have the system translate it.
+    </p>
+
+    <p>
+      <strong>Search intent gap.</strong> When a user searches for "shampoo sachet" or "coffee sachet" on Instamart, the platform does not recognize "sachet" as a meaningful category. It returns bulk sizes and autocorrects the query. Even if Instamart stocked sachets tomorrow, users searching for them might not find them, because the search layer does not have the mental model.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Failure mode</th>
+          <th>What the user wants</th>
+          <th>What Instamart does</th>
+          <th>Which solution fixes it</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Pack size mismatch</strong></td>
+          <td>A specific small quantity that exists as a real product but is not listed</td>
+          <td>Lists only larger pre-packaged sizes from the same brand</td>
+          <td><strong>The sachet shelf</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Variable quantity gap</strong></td>
+          <td>A custom amount no pre-packaged SKU can express</td>
+          <td>Offers only fixed SKU sizes with no way to request a custom quantity</td>
+          <td><strong>The user-chosen quantity feature</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Search intent gap</strong></td>
+          <td>A category the search layer does not recognize as valid</td>
+          <td>Returns bulk packs and autocorrects the size keyword away</td>
+          <td><strong>Search ranking updates</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      These three failure modes compound. The catalog does not stock the small unit. The platform does not let the user specify a custom quantity. The search layer does not understand the concept. A user who has had three or four sessions end in one of these failure modes stops opening the app for that category. They do not complain. They do not write a review. They just stop trying. The next time they need cardamom, or a sachet, or 250 grams of curd, they walk downstairs.
+    </p>
+
+    <p>
+      This is the leak the case study is about. Swiggy cannot see it in any dashboard because there is no event in the data that corresponds to it. No abandoned cart, because the item was never added. No search with zero results, because the search did return results — just the wrong ones. No support ticket, because the user had nothing concrete to complain about. The session looks fine to Instamart. The user is already gone.
+    </p>
+
+    <h3>The deeper reframe</h3>
+
+    <p>
+      When I started looking at this problem, I thought the fix was more SKUs. Add the Nandini 200-gram packet. Add shampoo sachets. Close the gaps one by one and the catalog would eventually cover the ground.
+    </p>
+
+    <p>
+      I do not think that is the fix anymore. The fix is not more SKUs. The fix is to stop making the SKU the primary unit of interaction between the user and the catalog.
+    </p>
+
+    <p>
+      At the kirana store, when my mother asks for 250 grams of atta, the shopkeeper weighs out 250 grams of atta. The quantity she wants is the quantity she gets. There is no menu, no pre-set list of options, no need to settle for the closest thing on the shelf. The transaction is built around what she came for, not around what was packaged upstream weeks ago.
+    </p>
+
+    <p>
+      Instamart's catalog does the opposite. It shows her what was packaged upstream. The 1 kg, 2 kg, and 5 kg of Aashirvaad atta exist because a category manager decided which sizes to list, in which week, against which margin target. By the time my mother opens the app, those decisions have already been made and she has no way to change them. Her only choices are to accept one of the listed sizes or to close the app.
+    </p>
+
+    <p>
+      A better catalog would treat the SKU as a backend concept — what the dark store stocks, how inventory is counted, how fulfillment is tracked — and let the user interact with a different concept at the front end, which is the amount they want to buy right now. The translation between the user's amount and the backend's SKUs would happen behind the scenes. The user would never see the SKU. The user would see the amount they asked for.
+    </p>
+
+    <figure>
+      <img src="/images/data-flow-diagram.jpg" alt="Diagram comparing current data flow (User to SKU list to Cart to Fulfillment) with proposed data flow (User to Amount to Translation Layer to SKU to Fulfillment)" />
+      <figcaption>The structural inversion. In the current flow, the catalog decides the quantity. In the proposed flow, the user decides, and a translation layer maps the user's intent onto whatever SKUs or partial fulfillments can serve it.</figcaption>
+    </figure>
+
+    <p>
+      One way to state this in a framework readers might already know is Jobs to Be Done. When my mother opens Instamart on a Tuesday evening because the curd ran out, the job she is hiring the app to do is not "help me stock up for the week." The job is "help me replace the specific thing I just ran out of, in the specific amount I need, right now." These are two different jobs and they have opposite requirements. Stock-up is planned, bundled, and larger. Replenishment is unplanned, single-item, and smaller. Maxxsaver is designed to serve the stock-up job. My mother is trying to do the replenishment job. The two are not compatible. Swiggy is optimizing for the wrong job.
+    </p>
+
+    <h2>The solution</h2>
+
+    <p>
+      The solution has two parts because you cannot ship the full thing at once. The first part is narrow and ships in a quarter. The second part is deeper and ships over the following year, after the first part has proven the demand exists. The first part is not the answer on its own — it is the wedge that earns the right to build the second part, which is the real answer.
+    </p>
+
+    <h3>Part one: the sachet shelf</h3>
+
+    <p>
+      Add a dedicated category to the Instamart app called the sachet shelf. It contains only the smallest available unit of high-frequency household consumables — shampoo sachets, coffee sachets, single-use face wash and hair oil packets, small camphor packs, small cashew strips, small toothpaste tubes, basic bread at kirana prices. These are items users currently walk to the kirana store for because Instamart does not list them in the size they want.
+    </p>
+
+    <p>
+      The sachet shelf is not "add more items to the catalog." It is a separate section with its own merchandising rules, its own home-screen position, and its own search-ranking logic. The distinction matters. If sachets are added to the main catalog without a dedicated shelf, they will be buried under bottles in the standard search ranking, which is tuned for per-SKU margin. The dedicated shelf removes the ranking competition and guarantees the small unit is findable when the user is looking for it.
+    </p>
+
+    <p>
+      The economics of the sachet shelf work because sachets do not need to be individually profitable. They function as session starts. A user who opens Instamart to buy a two-rupee shampoo sachet will, in many cases, add three or four other items to the cart in the same session. The sachet is the reason the session started. Everything else is the margin. This is the same loss-leader logic Swiggy already uses in food delivery, applied to the small-unit problem in groceries.
+    </p>
+
+    <figure>
+      <img src="/images/wireframe-sachet-shelf.jpg" alt="Wireframe of the Instamart home screen with a new Sachet Shelf tile added above the existing category grid" />
+      <figcaption>Wireframe 1: the sachet shelf, positioned above the existing category grid on the Instamart home screen.</figcaption>
+    </figure>
+
+    <figure>
+      <img src="/images/wireframe-search-before-after.jpg" alt="Side-by-side comparison of Instamart search results for shampoo, before and after the sachet shelf launch" />
+      <figcaption>Wireframe 3: the search ranking change. Before, "shampoo" returns bottles. After, the smallest available unit is surfaced first.</figcaption>
+    </figure>
+
+    <h3>What I got wrong</h3>
+
+    <p>
+      When I started building this case study, I was focused on pack sizes. I believed that if Instamart would just carry more sachets, the mismatch would close. The sachet shelf was going to be the main answer. I had the structure of it sketched out and I was ready to propose it as the case study's central recommendation.
+    </p>
+
+    <p>
+      Then the framing shifted. I realized the sachet shelf was solving a subset of the problem, not the problem itself. The real issue was not that Instamart did not have enough sizes. It was that the user, no matter how many sizes Instamart added, was still being handed a list of pre-made choices instead of being asked what she wanted. Sachets are not a solution to that. They are a better pre-made choice, but they are still pre-made. The shopkeeper at the kirana store moves their hand on the scale because the user said so. That movement is the thing the sachet shelf does not give back.
+    </p>
+
+    <p>
+      I did not throw away the sachet shelf when I realized this. It is still the right first step because it is the only thing that ships in a quarter and it addresses the highest-volume cases. But I stopped treating it as the answer and started treating it as the wedge — the thing that ships first to prove the demand is real, before the second solution does the harder work of returning agency to the user.
+    </p>
+
+    <h3>Part two: the user-chosen quantity</h3>
+
+    <p>
+      The deeper fix is to let the user specify the amount they want, rather than choosing from pre-made options. On any product page where it is operationally feasible, the user sees a number input field in addition to the standard pack-size selector. If the user wants 250 grams of besan, she types 250. The app accepts the request and figures out how to fulfill it from one of three paths.
+    </p>
+
+    <p>
+      <strong>Path one: the dark store fulfills the exact amount.</strong> For weighable items like atta, besan, sugar, and pulses, the dark store is equipped with scales and the picker is trained to weigh out custom amounts during picking. This path requires investment in equipment and training but no new infrastructure beyond that.
+    </p>
+
+    <p>
+      <strong>Path two: a kirana partner fulfills the custom amount.</strong> For items where the dark store cannot economically handle variable quantities, the request is routed to a partnered kirana in the delivery zone. The kirana weighs out the quantity, a Swiggy delivery agent picks it up and combines it with whatever else the user ordered, and the merged order is delivered together. This path requires a kirana partner network and a routing system Swiggy does not currently have.
+    </p>
+
+    <p>
+      <strong>Path three: honest fallback.</strong> When neither path is available, the app shows the closest standard pack with explicit labeling. "You asked for 250g. The smallest pack we have is 500g, which is more than you asked for." The user decides. This is not a fix, but it is better than the current state where the catalog silently fails.
+    </p>
+
+    <figure>
+      <img src="/images/wireframe-quantity-input.jpg" alt="Wireframe of an Instamart product page showing a new quantity input field below the existing pack-size selector, with three fulfillment path options" />
+      <figcaption>Wireframe 2: the quantity input field on a product page. The user specifies the amount they want, and the app routes the request through the appropriate fulfillment path.</figcaption>
+    </figure>
+
+    <p>
+      The key design decision across all three paths is that the user's specified amount is the primary input, and the SKU is a backend implementation detail. The user speaks in amounts. The system speaks in SKUs. The translation layer between them is what Swiggy would be building, and it is the thing that currently does not exist in any Indian quick commerce platform.
+    </p>
+
+    <h2>How I would know if it was working</h2>
+
+    <p>
+      The single most important metric for this work is weekly order frequency per active user. Not average order value. Not gross merchandise value. Not total revenue. Frequency.
+    </p>
+
+    <p>
+      The thesis is that the Indian household shops in small, frequent runs and that the current catalog is forcing them into a rhythm that does not match their natural cadence. If the work succeeds, users will come back more often and buy smaller amounts each time. The baseline, from Swiggy's own filings, is 0.64 orders per user per week. Any movement upward is the signal.
+    </p>
+
+    <p>
+      There is a counterintuitive implication. If this work succeeds, average order value will go down, not up. Smaller baskets, more often, is the shape of the shift. A growth PM looking at the data would interpret a falling AOV as failure. In this context, falling AOV paired with rising frequency is exactly the signature of the shift the case study is proposing. The relevant number is total weekly spend per user, which should rise even as AOV falls because the rise in frequency more than compensates.
+    </p>
+
+    <p>
+      Two guardrail metrics catch the most likely failure modes. Total weekly spend per user catches the case where frequency rises but each order is too small. Delivery cost as a percentage of order value catches the case where smaller orders break delivery economics. Both are metrics Swiggy already tracks.
+    </p>
+
+    <p>
+      The diagnostic metric I would want to build, and which Swiggy does not currently have, is the silent-abandonment count. The number of sessions per day in which a user searches for something, views the result, does not add anything to the cart, and closes the app — segmented by category. This is a proxy for the moment my mother experiences when the catalog fails her, which is invisible in current dashboards because it leaves no trace in the cart. If I had access to Swiggy's data tomorrow, the first analysis I would run is this count broken down by category and correlated against the smallest-available-pack-size in each category. If the correlation is strong, the thesis holds.
+    </p>
+
+    <h2>Why this is worth building</h2>
+
+    <p>
+      Instamart is losing ₹908 crore per quarter. Maxxsaver has been running for over a year and losses are growing, not shrinking. The infrastructure is running at roughly half its designed capacity. The number Swiggy needs to move is not AOV. It is orders per user per week, and that number has been stuck near 0.64 for quarters.
+    </p>
+
+    <p>
+      The reason frequency is stuck is not that users have stopped caring about convenience or speed. The reason is that the catalog is not serving the small, frequent purchases that would drive frequency up. The evidence for this is visible in one household — mine — and consistent with how Indian middle-class households actually shop. It is also consistent with a specific anomaly in Swiggy's own numbers: dark stores running at half capacity at the same time the company is publicly prioritizing higher AOV instead of higher frequency. The company is pushing one lever while the other lever sits untouched.
+    </p>
+
+    <p>
+      Even modest movement on the frequency number would change the economics. If Instamart's 12.8 million users went from 0.64 orders per week to 1.0 orders per week, that is an additional 4.6 million orders per week across the platform, absorbed by infrastructure that is currently idle for half its capacity. The incremental cost of those orders is close to zero on the fixed-cost side, which is where quick commerce has been bleeding money. This is not a claim that the sachet shelf alone fixes profitability. It is a claim that the frequency lever is worth testing, and that the sachet shelf is the cheapest possible way to test it.
+    </p>
+
+    <h2>What I do not know</h2>
+
+    <p>
+      I cannot verify the silent-abandonment mechanism at scale. The first piece of work I would want to do as a PM on this team is to actually build the silent-abandonment measurement and see whether the numbers look the way I am predicting. If they do not, the thesis is wrong and the work should not ship.
+    </p>
+
+    <p>
+      I do not know whether Swiggy has already considered and rejected some version of the sachet shelf or the user-chosen quantity. Both ideas are not conceptually new. It is possible the company has tested them and found reasons they do not work that I cannot see from the outside. A real PM joining this team would spend the first two weeks finding out what has been tried and what was learned, before proposing anything new.
+    </p>
+
+    <p>
+      I do not know whether kirana shopkeepers would actually want to participate in a partner network of the kind I am proposing in part two. The economics from Swiggy's side look workable. The relationship dynamics from the kirana side are harder to read without going and talking to shopkeepers in a few Bengaluru neighborhoods, which would be the first fieldwork I would do in the first month of actually building this.
+    </p>
+
+    <h2>Why I wanted to work on this</h2>
+
+    <p>
+      I picked this problem because the user at the center of it is my mother, and I grew up inside the shopping grammar this case study is about. I did not have to research how households like mine shop — I already knew. What I did not know, until I started looking at Swiggy's own filings, was that the company is currently pursuing a strategy that points away from how my mother wants to shop. Maxxsaver is asking her to consolidate. She does not want to consolidate. She wants the exact thing she needs tonight, in the exact amount she needs, and to go back to cooking.
+    </p>
+
+    <p>
+      The data science background matters here for one specific reason. It taught me to ask what is not in the dashboard rather than what the dashboard says. Maxxsaver shows up in every Instamart earnings call because AOV is a number the dashboards are built to track. The 0.64 orders per user per week is also visible, but it is the kind of number that gets read as "frequency is stable" rather than "frequency is the lever we are not pulling." The silent-abandonment count is invisible because nobody has built the field. A PM with a data background notices the absence. A PM without one reads only what is present. The combination of noticing the absence and knowing the user well enough to predict what would fill it is the angle I bring to this problem.
+    </p>
+
+    <p>
+      If that is the kind of thinking you are looking for in a product manager, I would like to have the conversation.
+    </p>
+
+    <div class="sources">
+      <p><strong>Sources</strong></p>
+      <p>AOV of ₹697 in Q2 FY26, dark store utilization of 1,025 against 2,000+ capacity, Maxxsaver strategy commentary: <a href="https://www.swiggy.com/corporate/wp-content/uploads/2025/10/Q2-FY2026-Shareholder-letter.pdf">Swiggy Q2 FY26 Shareholder Letter</a>, October 2025.</p>
+      <p>106.4 million orders, 12.8 million users, ₹908 crore Q3 FY26 loss, 1,136 dark stores: <a href="https://entrackr.com/news/with-rs-908-cr-loss-in-q3-fy26-swiggy-instamart-profitability-remains-elusive-11055443">Entrackr</a>, January 2026.</p>
+      <p>AOV growth from ₹420 to ₹612 in Q1 FY26, Maxxsaver MTU penetration: <a href="https://www.swiggy.com/corporate/wp-content/uploads/2025/07/Press-release_Q1FY26.pdf">Swiggy Q1 FY26 Press Release</a>, July 2025.</p>
+      <p>All household observations and kirana price comparisons documented by the author in Bengaluru, March 2026.</p>
+    </div>
+
+  </article>
+</BaseLayout>

@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+const { title, description } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description || "Grusha G S — AI product strategist building multilingual voice and language systems for India."} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a href="/">Grusha G S</a>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div>
+          <a href="mailto:grushags90@gmail.com">grushags90@gmail.com</a>
+          <a href="https://linkedin.com/in/grusha-gs" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/Grusha15" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <div>Bengaluru, India</div>
+      </div>
+    </footer>
+  </body>
+</html>
