@@ -305,32 +305,70 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <h2>The solution</h2>
 
     <p>
-      The solution has two parts because you cannot ship the full thing at once. The first part is narrow and ships in a quarter. The second part is deeper and ships over the following year, after the first part has proven the demand exists. The first part is not the answer on its own — it is the wedge that earns the right to build the second part, which is the real answer.
+      The solution has three rings. Each ring is wider than the one before it, and each one has to earn the right to the next by proving the demand is real and the economics work. The first ring ships in a quarter. The second ships over the following six months. The third is the long vision that makes sense only after the first two have worked.
     </p>
 
-    <h3>Part one: the sachet shelf</h3>
+    <h3>Ring one: the bundle mechanic</h3>
 
     <p>
-      Add a dedicated category to the Instamart app called the sachet shelf. It contains only the smallest available unit of high-frequency household consumables — shampoo sachets, coffee sachets, single-use face wash and hair oil packets, small camphor packs, small cashew strips, small toothpaste tubes, basic bread at kirana prices. These are items users currently walk to the kirana store for because Instamart does not list them in the size they want.
-    </p>
-
-    <p>
-      The sachet shelf is not "add more items to the catalog." It is a separate section with its own merchandising rules, its own home-screen position, and its own search-ranking logic. The distinction matters. If sachets are added to the main catalog without a dedicated shelf, they will be buried under bottles in the standard search ranking, which is tuned for per-SKU margin. The dedicated shelf removes the ranking competition and guarantees the small unit is findable when the user is looking for it.
+      Before I describe the first ring, there is a constraint I need to name, because ignoring it would break the whole argument. Instamart has a minimum order value of ₹99 to ₹149. A ₹10 shampoo sachet cannot clear that floor on its own. Simply adding sachets to the catalog would make them findable but not buyable — the user would hit the minimum-order wall at checkout and abandon, which is the same failure mode the current catalog already produces.
     </p>
 
     <p>
-      The economics of the sachet shelf work because sachets do not need to be individually profitable. They function as session starts. A user who opens Instamart to buy a two-rupee shampoo sachet will, in many cases, add three or four other items to the cart in the same session. The sachet is the reason the session started. Everything else is the margin. This is the same loss-leader logic Swiggy already uses in food delivery, applied to the small-unit problem in groceries.
+      The minimum is a real delivery economics constraint. Removing it would make unit economics worse. The fix is to let the minimum get cleared by a bundle of small items the user actually wanted, rather than by one large item they did not.
+    </p>
+
+    <p>
+      A user opens Instamart needing a ₹10 shampoo sachet. The app surfaces the sachet prominently in a dedicated section on the home screen. The user adds it to cart. The app immediately shows a panel titled <em>"Your household usually buys these too"</em>, populated from the user's past purchase history — a coffee sachet, a camphor pack, a small toothpaste, a Nandini 200g curd, a few loose onions, a small besan, a pack of biscuits. Nine more items at ₹10 each, and the basket is ₹100. The minimum is cleared. The single sachet was the trigger. The bundle is the order.
     </p>
 
     <figure>
       <img src="/images/wireframe-sachet-shelf.jpg" alt="Wireframe of the Instamart home screen with a new Sachet Shelf tile added above the existing category grid" />
-      <figcaption>Wireframe 1: the sachet shelf, positioned above the existing category grid on the Instamart home screen.</figcaption>
+      <figcaption>Ring one, entry point: the sachet shelf on the home screen, positioned above the existing category grid as the trigger for small-unit sessions.</figcaption>
     </figure>
 
+    <p>
+      The economics of this are worth working through, because this is where the frequency argument becomes a retention argument and stops being directional.
+    </p>
+
+    <p>
+      One ₹100 shampoo bottle purchase happens about once every five weeks, because a bottle lasts that long. Ten ₹10 sachet-style purchases, each matching an immediate household need, happen once a week, because the underlying needs recur weekly. Same basket size per order. Same GOV contribution per order. But the bundled basket happens four to five times more often per month, which means four to five times the monthly GOV per user — and the user never felt like they were being pushed to buy more than they needed.
+    </p>
+
+    <p>
+      Maxxsaver tries to grow the size of each order. The bundle mechanic tries to grow the number of orders. Over a month, the bundle mechanic delivers more GOV per user, because frequency compounds and basket size does not. The two strategies are not actually in tension when the basket is designed correctly. The problem with Maxxsaver is not that it is trying to grow revenue. The problem is that it is growing the wrong axis of revenue — the one that caps out at the weekly stock-up cycle, rather than the one that tracks the daily kitchen cadence Indian households have been running for generations.
+    </p>
+
+    <p>
+      Ring one ships in a quarter. It needs no new SKUs beyond surfacing what the catalog already carries at small sizes. It needs no operational changes at dark stores. It needs no supplier negotiations. It is a search, merchandising, and home-screen experience experiment — all things Swiggy already has the infrastructure to run.
+    </p>
+
+    <h3>Ring two: search repair, catalog audit, smaller-pack prompt</h3>
+
+    <p>
+      Ring one assumes the small-unit items users need are already in the catalog, just hard to find. That is partly true and partly not. For every shampoo sachet that is in the catalog but ranked below bottles, there is a Nandini 200g packet that is not in the catalog at all. Ring two is the work of closing these gaps, in three specific interventions, ordered by cost and confidence.
+    </p>
+
+    <p>
+      <strong>Search intent repair.</strong> "Sachet", "loose", "small", "quarter kilo", "half kilo" should be registered as size-filter tokens that narrow results, not ignored or autocorrected away. When a user searches "shampoo sachet", the search layer should recognize "sachet" as a size modifier and return only sachets, ranked by smallest unit first. This is a ranking-logic change, not a catalog change. It is two to four weeks of engineering work. It requires no new SKUs, no operational changes, no supplier conversations. It is the cheapest possible intervention and the one with the cleanest signal — if search-to-add-to-cart rate on size-modifier queries goes up, the fix is working. This should ship first, even before the bundle mechanic, because it makes the bundle mechanic findable in the first place.
+    </p>
+
+    <p>
+      <strong>The Nandini 200g catalog audit.</strong> The 200-gram Nandini packet exists. The supply chain carries it. Every kirana store in Bengaluru stocks it. A Swiggy category manager decided, consciously or by default, not to list it. That decision can be reversed by a phone call and a catalog entry. The work is to audit the top hundred most-searched categories for SKUs that physically exist in the Bengaluru supply chain but are not listed, and to add them. This is not glamorous work. It is a merchandising operations task that requires someone to own it and work through it item by item. Six weeks for one city. The risk is not technical — it is organizational. The question to ask in a product review is "who owns this and by when". If the answer is nobody, it never ships.
+    </p>
+
+    <p>
+      <strong>The smaller-pack prompt.</strong> When a user views a larger pack and does not add it to cart within a few seconds, the app surfaces: <em>"Looking for a smaller size? 500g available."</em> Or if no smaller size exists in the catalog yet: <em>"This is our smallest size. Want to add anyway?"</em> The second version is honest fallback, which builds trust more than silent failure does. The hard part of this intervention is not the prompt itself — it is figuring out the right trigger signal. The eight-second hover timer is a guess. The real signal might be something else: search query contains "small" followed by viewing a large pack, or repeated navigation back to search after viewing a product, or something we cannot predict from outside. The fix is to build the silent-abandonment measurement first (which the metrics section already calls for), use the data to figure out what the actual abandonment signal looks like, and then design the prompt around the real signal rather than an assumed one. Measure before intervening. This is the discipline that separates PM work that scales from PM work that gets quietly rolled back next quarter.
+    </p>
+
     <figure>
-      <img src="/images/wireframe-search-before-after.jpg" alt="Side-by-side comparison of Instamart search results for shampoo, before and after the sachet shelf launch" />
-      <figcaption>Wireframe 3: the search ranking change. Before, "shampoo" returns bottles. After, the smallest available unit is surfaced first.</figcaption>
+      <img src="/images/wireframe-search-before-after.jpg" alt="Side-by-side comparison of Instamart search results for shampoo, before and after the search intent repair" />
+      <figcaption>Ring two, search intent repair. Before, "shampoo" returns bottles. After, the smallest available unit is surfaced first and "sachet" is recognized as a size filter.</figcaption>
     </figure>
+
+    <p>
+      Ring two ships over the following two quarters. Search repair first because it is the cheapest and it unblocks everything else. Catalog audit second because it requires organizational ownership but no engineering. Smaller-pack prompt third because it depends on having the silent-abandonment measurement in place before the prompt can be designed intelligently.
+    </p>
 
     <h3>What I got wrong</h3>
 
@@ -339,17 +377,17 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </p>
 
     <p>
-      Then the framing shifted. I realized the sachet shelf was solving a subset of the problem, not the problem itself. The real issue was not that Instamart did not have enough sizes. It was that the user, no matter how many sizes Instamart added, was still being handed a list of pre-made choices instead of being asked what she wanted. Sachets are not a solution to that. They are a better pre-made choice, but they are still pre-made. The shopkeeper at the kirana store moves their hand on the scale because the user said so. That movement is the thing the sachet shelf does not give back.
+      Two things shifted the framing. First, I realized the sachet shelf alone could not clear the basket minimum, which meant the user would still abandon at checkout even after finding the sachet they wanted. That is what led to the bundle mechanic in ring one. Second, I realized that even with a perfect bundle, the user was still being handed a list of pre-made choices instead of being asked what she wanted. Sachets and bundles are better pre-made choices, but they are still pre-made. The shopkeeper at the kirana store moves their hand on the scale because the user said so. That movement is the thing no list of pre-made options can give back. That is what led to ring three.
+    </p>
+
+    <h3>Ring three: the user-chosen quantity</h3>
+
+    <p>
+      The third ring is the long vision. It ships only after rings one and two have proven that the frequency lever works and that users will come back for small-unit purchases when the catalog serves them. Ring three is the work of building the catalog that finally lets the user name the amount directly.
     </p>
 
     <p>
-      I did not throw away the sachet shelf when I realized this. It is still the right first step because it is the only thing that ships in a quarter and it addresses the highest-volume cases. But I stopped treating it as the answer and started treating it as the wedge — the thing that ships first to prove the demand is real, before the second solution does the harder work of returning agency to the user.
-    </p>
-
-    <h3>Part two: the user-chosen quantity</h3>
-
-    <p>
-      The deeper fix is to let the user specify the amount they want, rather than choosing from pre-made options. On any product page where it is operationally feasible, the user sees a number input field in addition to the standard pack-size selector. If the user wants 250 grams of besan, she types 250. The app accepts the request and figures out how to fulfill it from one of three paths.
+      On any product page where it is operationally feasible, the user sees a number input field in addition to the standard pack-size selector. If the user wants 250 grams of besan, she types 250. The app accepts the request and figures out how to fulfill it from one of three paths.
     </p>
 
     <p>
@@ -357,20 +395,135 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </p>
 
     <p>
-      <strong>Path two: a kirana partner fulfills the custom amount.</strong> For items where the dark store cannot economically handle variable quantities, the request is routed to a partnered kirana in the delivery zone. The kirana weighs out the quantity, a Swiggy delivery agent picks it up and combines it with whatever else the user ordered, and the merged order is delivered together. This path requires a kirana partner network and a routing system Swiggy does not currently have.
+      <strong>Path two: a kirana partner fulfills the custom amount.</strong> For items where the dark store cannot economically handle variable quantities, the request is routed to a partnered kirana in the delivery zone. The kirana weighs out the quantity, a Swiggy delivery agent picks it up and combines it with whatever else the user ordered, and the merged order is delivered together. This path requires a kirana partner network and a routing system Swiggy does not currently have. Building it is a significant investment and not something a case study can prescribe — it is something ring one and ring two have to earn.
     </p>
 
     <p>
-      <strong>Path three: honest fallback.</strong> When neither path is available, the app shows the closest standard pack with explicit labeling. "You asked for 250g. The smallest pack we have is 500g, which is more than you asked for." The user decides. This is not a fix, but it is better than the current state where the catalog silently fails.
+      <strong>Path three: honest fallback.</strong> When neither path is available, the app shows the closest standard pack with explicit labeling. <em>"You asked for 250g. The smallest pack we have is 500g, which is more than you asked for."</em> The user decides. This is not a fix, but it is better than the current state where the catalog silently fails.
     </p>
 
     <figure>
       <img src="/images/wireframe-quantity-input.jpg" alt="Wireframe of an Instamart product page showing a new quantity input field below the existing pack-size selector, with three fulfillment path options" />
-      <figcaption>Wireframe 2: the quantity input field on a product page. The user specifies the amount they want, and the app routes the request through the appropriate fulfillment path.</figcaption>
+      <figcaption>Ring three: the quantity input field on a product page. The user specifies the amount they want, and the app routes the request through the appropriate fulfillment path.</figcaption>
     </figure>
 
     <p>
       The key design decision across all three paths is that the user's specified amount is the primary input, and the SKU is a backend implementation detail. The user speaks in amounts. The system speaks in SKUs. The translation layer between them is what Swiggy would be building, and it is the thing that currently does not exist in any Indian quick commerce platform.
+    </p>
+
+    <p>
+      Ring three is a year of work if rings one and two have proven themselves. It is zero if they have not. Large platform shifts do not happen in one release. They happen in layers, and each layer has to earn the right to the next one.
+    </p>
+
+    <h2>The unit economics, honestly</h2>
+
+    <p>
+      A skeptical PM at Swiggy reading this far has a specific objection ready, and I want to address it directly because if the economics do not work at the order level the whole thesis collapses.
+    </p>
+
+    <p>
+      The objection is: if the bundle mechanic makes baskets smaller on average, contribution per order goes down, and even if frequency rises, total contribution per user could end up lower than it is under Maxxsaver. This is a real concern and it is the question I would ask if I were on the other side of the table. Let me run the math.
+    </p>
+
+    <p>
+      Approximate unit economics per order, from Swiggy's public filings and reasonable analyst estimates:
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Current (Maxxsaver)</th>
+          <th>Bundle mechanic working</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Average order value</td>
+          <td>₹697</td>
+          <td>~₹520</td>
+        </tr>
+        <tr>
+          <td>Take rate</td>
+          <td>~18%</td>
+          <td>~18%</td>
+        </tr>
+        <tr>
+          <td>Gross revenue per order</td>
+          <td>~₹125</td>
+          <td>~₹94</td>
+        </tr>
+        <tr>
+          <td>Delivery cost per order</td>
+          <td>~₹55</td>
+          <td>~₹55</td>
+        </tr>
+        <tr>
+          <td>Contribution per order</td>
+          <td>~₹70</td>
+          <td>~₹39</td>
+        </tr>
+        <tr>
+          <td>Orders per user per week</td>
+          <td>0.64</td>
+          <td>1.0</td>
+        </tr>
+        <tr>
+          <td>Monthly contribution per user</td>
+          <td>~₹179</td>
+          <td>~₹156</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      The per-user monthly contribution under the bundle mechanic is slightly lower than under Maxxsaver, not higher. I want to state that honestly instead of hiding it. At the individual-order level, the bundle mechanic is not a better business than Maxxsaver is. If that were the whole argument, the case study would be wrong.
+    </p>
+
+    <p>
+      But that is not the whole argument. The bundle mechanic does not win on per-order economics. It wins on network economics, and this is the move the case study's thesis actually rests on.
+    </p>
+
+    <p>
+      Swiggy's dark stores are currently running at about 1,025 orders per day per store against a capacity of 2,000+. Roughly half the network's throughput capacity is sitting idle. The fixed costs of running a dark store — rent, utilities, base staffing, inventory holding — are being paid whether the store handles 1,025 orders or 2,000. Every additional order absorbed by that idle capacity arrives at near-zero marginal fixed cost. The losses Instamart is reporting — ₹908 crore in Q3 FY26 — live in the gap between fixed cost base and order volume, not in the per-order variable costs.
+    </p>
+
+    <p>
+      If the bundle mechanic gets Instamart's 12.8 million users from 0.64 orders per week to 1.0 orders per week, that is roughly 4.6 million additional orders per week across the platform. Those orders are absorbed by infrastructure that is already paid for. The fixed costs per order drop because the denominator grows while the numerator stays flat. Per-order contribution improves at the network level even if it drops at the individual-order level.
+    </p>
+
+    <p>
+      The precise version of the claim is this: <em>the bundle mechanic does not improve per-order economics dramatically. It improves network economics by filling idle capacity.</em> Frequency is not better than AOV in a vacuum. Frequency is better than AOV <em>in the specific situation Instamart is in right now</em>, which is a business with a large, paid-for, under-utilized fixed cost base that can absorb significantly more throughput at near-zero marginal fixed cost.
+    </p>
+
+    <p>
+      This is not a general argument for frequency over basket size. It is an argument for this specific lever in this specific business at this specific moment. If Swiggy's dark stores were running at 95% capacity, the argument would be different. They are running at roughly 50%, which is exactly the setting in which a frequency bet has the highest expected return.
+    </p>
+
+    <h3>Complement, not replacement</h3>
+
+    <p>
+      One question this case study has to answer explicitly: is the bundle mechanic meant to replace Maxxsaver, or run alongside it?
+    </p>
+
+    <p>
+      Complement. The two strategies are solving for genuinely different user segments, and both segments are real and both are valuable.
+    </p>
+
+    <p>
+      Maxxsaver is correctly designed for the dual-income urban household that shops weekly, has the storage to absorb bulk purchases, wants to consolidate errands, and responds to bulk discounts. This user exists. Maxxsaver is not wrong for them. The mistake is not that Maxxsaver exists — the mistake is treating it as the only lever Instamart has.
+    </p>
+
+    <p>
+      The bundle mechanic is designed for a different user: the household managing daily kitchen needs, buying by immediate need, with no interest in consolidating, who currently leaves the app silently when the catalog fails them. This user is larger in number across Indian middle-class households, but currently underserved by the platform. My mother is this user. So is almost everyone in my neighborhood.
+    </p>
+
+    <p>
+      The right move is to run both tracks and let user behavior self-select. Stock-up users drift toward Maxxsaver. Replenishment users drift toward the sachet shelf and the bundle mechanic. Over the first two quarters the data tells you which segment is larger, which is more retentive, which has better long-term value per user. You do not have to choose before you have the data. You just have to build both so the data can exist.
+    </p>
+
+    <p>
+      Six months after ring one and ring two ship, the company will know whether replenishment users have meaningfully higher monthly GOV per user than Maxxsaver users. If they do — and my hypothesis is that they do, because frequency compounds and basket size does not — the conversation at that point shifts from complement to replacement, and resources get reallocated accordingly. That is a decision for the data to make, not for this case study to make. The job of this case study is to argue that the data deserves to exist at all, which it currently does not because nobody has built the replenishment track to measure.
     </p>
 
     <h2>How I would know if it was working</h2>
