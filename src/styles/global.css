@@ -1,7 +1,7 @@
 /* ============================================
    FONTS — load from Google Fonts
    ============================================ */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500&family=Noto+Sans+Kannada:wght@400;500&family=Noto+Sans+Tamil:wght@400;500&family=Noto+Sans+Bengali:wght@400;500&family=Noto+Sans+Telugu:wght@400;500&family=Noto+Sans+Malayalam:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@400;500&family=Noto+Sans+Kannada:wght@400;500&family=Noto+Sans+Tamil:wght@400;500&family=Noto+Sans+Bengali:wght@400;500&family=Noto+Sans+Telugu:wght@400;500&family=Noto+Sans+Malayalam:wght@400;500&family=Noto+Sans+Gujarati:wght@400;500&family=Noto+Sans+Gurmukhi:wght@400;500&family=Noto+Sans+Oriya:wght@400;500&family=Noto+Sans+Sinhala:wght@400;500&display=swap');
 
 /* ============================================
    DESIGN TOKENS
@@ -175,6 +175,23 @@ main { min-height: 80vh; }
   margin: 0 auto;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.site-nav a {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  padding: 0.4rem 1rem;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 50px;
+  transition: all 0.2s ease;
+}
+
+.site-nav a:hover {
+  background: var(--color-accent);
+  color: #fff;
+  opacity: 1;
 }
 
 .site-header a {
@@ -221,9 +238,9 @@ main { min-height: 80vh; }
    HOME PAGE — HERO
    ============================================ */
 .hero {
-  padding: var(--space-xl) 0 var(--space-lg) 0;
+  padding: var(--space-xl) 0 var(--space-md) 0;
   border-bottom: 1px solid var(--color-rule);
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
 /* Rotating Indic greeting */
@@ -241,41 +258,41 @@ main { min-height: 80vh; }
   left: 0;
   top: 0;
   opacity: 0;
-  animation: greetingRotate 21s infinite;
+  animation: greetingRotate 42s infinite;
 }
 
-.hero-greeting span:nth-child(1) {
-  font-family: var(--font-indic-kannada);
-  animation-delay: 0s;
-}
-.hero-greeting span:nth-child(2) {
-  font-family: var(--font-indic-devanagari);
-  animation-delay: 3s;
-}
-.hero-greeting span:nth-child(3) {
-  font-family: var(--font-indic-tamil);
-  animation-delay: 6s;
-}
-.hero-greeting span:nth-child(4) {
-  font-family: var(--font-sans);
-  animation-delay: 9s;
-}
-.hero-greeting span:nth-child(5) {
-  font-family: var(--font-indic-bengali);
-  animation-delay: 12s;
-}
-.hero-greeting span:nth-child(6) {
-  font-family: var(--font-indic-telugu);
-  animation-delay: 15s;
-}
-.hero-greeting span:nth-child(7) {
-  font-family: var(--font-indic-malayalam);
-  animation-delay: 18s;
-}
+/* 1. Kannada */
+.hero-greeting span:nth-child(1) { font-family: 'Noto Sans Kannada', var(--font-serif); animation-delay: 0s; }
+/* 2. Hindi */
+.hero-greeting span:nth-child(2) { font-family: 'Noto Sans Devanagari', var(--font-serif); animation-delay: 3s; }
+/* 3. Tamil */
+.hero-greeting span:nth-child(3) { font-family: 'Noto Sans Tamil', var(--font-serif); animation-delay: 6s; }
+/* 4. English */
+.hero-greeting span:nth-child(4) { font-family: var(--font-sans); animation-delay: 9s; }
+/* 5. Bengali */
+.hero-greeting span:nth-child(5) { font-family: 'Noto Sans Bengali', var(--font-serif); animation-delay: 12s; }
+/* 6. Telugu */
+.hero-greeting span:nth-child(6) { font-family: 'Noto Sans Telugu', var(--font-serif); animation-delay: 15s; }
+/* 7. Malayalam */
+.hero-greeting span:nth-child(7) { font-family: 'Noto Sans Malayalam', var(--font-serif); animation-delay: 18s; }
+/* 8. Gujarati */
+.hero-greeting span:nth-child(8) { font-family: 'Noto Sans Gujarati', var(--font-serif); animation-delay: 21s; }
+/* 9. Punjabi */
+.hero-greeting span:nth-child(9) { font-family: 'Noto Sans Gurmukhi', var(--font-serif); animation-delay: 24s; }
+/* 10. Marathi */
+.hero-greeting span:nth-child(10) { font-family: 'Noto Sans Devanagari', var(--font-serif); animation-delay: 27s; }
+/* 11. Odia */
+.hero-greeting span:nth-child(11) { font-family: 'Noto Sans Oriya', var(--font-serif); animation-delay: 30s; }
+/* 12. Assamese */
+.hero-greeting span:nth-child(12) { font-family: 'Noto Sans Bengali', var(--font-serif); animation-delay: 33s; }
+/* 13. Sinhala */
+.hero-greeting span:nth-child(13) { font-family: 'Noto Sans Sinhala', var(--font-serif); animation-delay: 36s; }
+/* 14. Sanskrit */
+.hero-greeting span:nth-child(14) { font-family: 'Noto Sans Devanagari', var(--font-serif); animation-delay: 39s; }
 
 @keyframes greetingRotate {
-  0%, 10% { opacity: 1; transform: translateY(0); }
-  14.28%, 100% { opacity: 0; transform: translateY(-4px); }
+  0%, 5% { opacity: 1; transform: translateY(0); }
+  7.14%, 100% { opacity: 0; transform: translateY(-4px); }
 }
 
 .hero-name {
@@ -332,6 +349,31 @@ main { min-height: 80vh; }
 }
 
 .hero-links a:hover {
+  opacity: 1;
+}
+
+.hero-cta {
+  margin-top: var(--space-md);
+}
+
+.cta-link {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+  padding: 0.6rem 1.5rem;
+  border: 1px solid var(--color-rule);
+  border-radius: 50px;
+  display: inline-block;
+  transition: all 0.2s ease;
+  box-shadow: rgba(15, 15, 15, 0.1) 0px 1px 2px;
+}
+
+.cta-link:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  box-shadow: rgba(15, 15, 15, 0.1) 0px 2px 8px;
+  transform: translateY(-1px);
   opacity: 1;
 }
 
@@ -413,9 +455,7 @@ main { min-height: 80vh; }
    HOME PAGE — ABOUT
    ============================================ */
 .about {
-  padding: var(--space-lg) 0;
-  border-top: 1px solid var(--color-rule);
-  margin-top: var(--space-lg);
+  padding: var(--space-md) 0;
 }
 
 .about p {
@@ -558,6 +598,84 @@ main { min-height: 80vh; }
 
 .sources p:last-child {
   margin-bottom: 0;
+}
+
+/* ============================================
+   ENTRANCE ANIMATIONS
+   ============================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-greeting {
+  animation: fadeInUp 0.6s ease both;
+  animation-delay: 0.1s;
+}
+
+.hero-name {
+  animation: fadeInUp 0.6s ease both;
+  animation-delay: 0.25s;
+}
+
+.hero-tagline {
+  animation: fadeInUp 0.6s ease both;
+  animation-delay: 0.4s;
+}
+
+.hero-status {
+  animation: fadeInUp 0.6s ease both;
+  animation-delay: 0.55s;
+}
+
+.hero-links {
+  animation: fadeInUp 0.6s ease both;
+  animation-delay: 0.7s;
+}
+
+/* Scroll reveal for sections below the fold */
+.about,
+.work-section,
+.work-list {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeInUp 0.7s ease both;
+  animation-delay: 0.9s;
+}
+
+/* Work page cards stagger in */
+.work-item {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease both;
+}
+
+.work-item:nth-child(1) { animation-delay: 0.15s; }
+.work-item:nth-child(2) { animation-delay: 0.3s; }
+.work-item:nth-child(3) { animation-delay: 0.45s; }
+.work-item:nth-child(4) { animation-delay: 0.6s; }
+.work-item:nth-child(5) { animation-delay: 0.75s; }
+.work-item:nth-child(6) { animation-delay: 0.9s; }
+
+/* Case study page entrance */
+.case-study-meta {
+  animation: fadeInUp 0.6s ease both;
+  animation-delay: 0.1s;
+}
+
+.case-study-title {
+  animation: fadeInUp 0.6s ease both;
+  animation-delay: 0.25s;
+}
+
+.case-study-subtitle {
+  animation: fadeInUp 0.6s ease both;
+  animation-delay: 0.4s;
 }
 
 /* ============================================
